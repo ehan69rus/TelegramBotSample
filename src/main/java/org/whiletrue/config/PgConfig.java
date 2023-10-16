@@ -1,5 +1,7 @@
 package org.whiletrue.config;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.whiletrue.service.PropertiesService;
 
 import java.sql.Connection;
@@ -7,7 +9,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+@Configuration
 public class PgConfig implements DatabaseConfig {
+    @Bean
     public Connection createConnection() {
         try {
             String url = PropertiesService.getProperty("db_url").orElseThrow();
